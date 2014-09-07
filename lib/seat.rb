@@ -8,6 +8,7 @@ class Seat
 
 	attr_reader :row
 	attr_reader :number
+	attr_accessor :booked
 
 	def booked?
 		@booked

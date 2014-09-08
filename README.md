@@ -13,6 +13,6 @@ Technologies Used
 How to use
 =========
 
-* git@github.com:fitstek/cinema_booking.git
+* git clone git@github.com:fitstek/cinema_booking.git
 * cd cinema_booking
 * open with editor

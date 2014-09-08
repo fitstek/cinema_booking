@@ -1,5 +1,6 @@
 class Booking
-		@@ids = 0
+	@@ids = 0
+	
 	def initialize
 		@@ids += 1
 		@id = @@ids

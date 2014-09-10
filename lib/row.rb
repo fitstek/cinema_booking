@@ -2,7 +2,7 @@ class Row
 
 	def initialize(row_number)
 		@seats ||= []
-		raise "Please pick a seat number between 0 and 99" if inexistent?(row_number)
+		raise "Please pick a row number between 0 and 99" if inexistent?(row_number)
 		@number = row_number
 		0.upto(49).each do | seat_number|
 			@seats << Seat.new(row_number, seat_number)

@@ -7,7 +7,6 @@ class Row
 		0.upto(49).each do | seat_number|
 			@seats << Seat.new(row_number, seat_number)
 		end
-		@seats
 	end
 
 	attr_reader :number

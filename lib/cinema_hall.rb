@@ -6,7 +6,6 @@ class CinemaHall
 		0.upto(99).each do | row_number|
 			@rows << Row.new(row_number)
 		end
-		@rows
 	end
 
 	attr_reader :number

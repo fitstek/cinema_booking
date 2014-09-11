@@ -1,7 +1,7 @@
 class Seat
 	def initialize(row_number, seat_number)
-		raise "Please pick a seat number between 0 and 49" if inexistent?(seat_number)
-		raise "Please pick a row number between 0 and 99" unless 0.upto(99).include?(row_number)
+		raise "Please pick a seat number between 0 and 49" if inexistent_seat?(seat_number)
+		raise "Please pick a row number between 0 and 99" if inexistent_row?(row_number)
 		@available = true
 		@row = row_number
 		@number = seat_number
@@ -15,7 +15,15 @@ class Seat
 		@available
 	end
 
-	def inexistent?(seat_number)
-		seat_number < 0 || seat_number > 49
+	def booked?
+		!@available
+	end
+
+	def inexistent_seat?(number)
+		number < 0 || number > 49
+	end
+
+	def inexistent_row?(number)
+		number < 0 || number > 99
 	end
 end

@@ -11,7 +11,6 @@ class Booking
 		first_seat_number.upto(last_seat_number).each do |seat_number|
 			@seats << hall.rows[first_seat_row].seats[seat_number]
 		end
-		@seats
 	end
 
 	attr_reader :hall

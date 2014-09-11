@@ -3,7 +3,7 @@ require 'seat'
 describe Seat do
 	it 'is available initially' do
 		seat = Seat.new(0,0)
-		expect(seat).not_to be_booked
+		expect(seat).to be_available
 	end
 	context 'seat and row numbers' do
 		it 'knows its seat number when created' do

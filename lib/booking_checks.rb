@@ -5,7 +5,10 @@ module BookingChecks
 	end
 
 	def less_than_six_seats?(booking_request)
-		booking_request.last_seat.number - booking_request.first_seat.number < 6
+		booking_request.seats.count < 6
 	end
 
+	def seats_available?(booking_request)
+		booking_request.seats.all? { |seat| seat.available? }
+	end
 end

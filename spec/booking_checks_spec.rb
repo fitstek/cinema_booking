@@ -4,12 +4,13 @@ class Check; include BookingChecks; end
 
 describe BookingChecks do
 	let(:check) {Check.new}
-	let(:booking) {Booking.new(1,0,46,0,48)}
-	let(:booking1) {Booking.new(1,0,1,0,4)}
-	let(:booking2) {Booking.new(1,0,3,0,6)}
-	let(:booking3) {Booking.new(1,0,3,0,4)}
-	let(:booking4) {Booking.new(1,0,3,1,4)}
-	let(:booking5) {Booking.new(1,0,3,0,9)}	
+	
+	let(:booking) {Booking.new(0,46,0,48)}
+	let(:booking1) {Booking.new(0,1,0,4)}
+	let(:booking2) {Booking.new(0,3,0,6)}
+	let(:booking3) {Booking.new(0,3,0,4)}
+	let(:booking4) {Booking.new(0,3,1,4)}
+	let(:booking5) {Booking.new(0,3,0,9)}	
 	
 	it 'gives true when bookings are on the same row' do
 		expect(check.seats_on_the_same_row?(booking3)).to eq true

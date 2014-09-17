@@ -9,8 +9,10 @@ class Booking
 		@last_seat = last_seat_number
 		@first_seat_row = first_seat_row
 		@last_seat_row = last_seat_row
-		first_seat_number.upto(last_seat_number).each do |seat_number|
-			@seat_numbers << seat_number
+		if first_seat_row == last_seat_row
+			first_seat_number.upto(last_seat_number).each do |seat_number|
+				@seat_numbers << seat_number
+			end
 		end
 	end
 

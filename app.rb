@@ -18,4 +18,5 @@ def input_from(file_path)
     b = Booking.new(first_row, first_seat, last_row, last_seat)
     @hall.book(b, @hall)
   end
+    puts "Total number of bookings rejected: #{@hall.rejected.count}"
 end

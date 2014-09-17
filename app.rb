@@ -11,10 +11,10 @@ require_relative 'lib/seat'
 def input_from(file_path)
   File.open(file_path, "r").each_line do | booking_request|
     params = booking_request.split(/\D/).drop(1)
-    first_row = params[1]
-    first_seat = params[2]
-    last_row = params[3]
-    last_seat = params[4]
+    first_row = params[1].to_i
+    first_seat = params[2].to_i
+    last_row = params[3].to_i
+    last_seat = params[4].to_i
     b = Booking.new(first_row, first_seat, last_row, last_seat)
     @hall.book(b, @hall)
   end

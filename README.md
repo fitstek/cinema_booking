@@ -12,7 +12,8 @@ Technologies Used
 
 How to use
 =========
-* Not finished yet
 * git clone git@github.com:fitstek/cinema_booking.git
 * cd cinema_booking
-* open with editor
+* irb
+* require './app.rb'
+* supply the file path to be processed when prompted

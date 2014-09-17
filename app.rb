@@ -7,7 +7,9 @@ require_relative 'lib/seat'
 
 @hall = CinemaHall.new(1)
 
-
+def hall
+  @hall 
+end
 
 def input_from
   puts "Please put the path of the file to be processed"
@@ -18,10 +20,11 @@ def input_from
     first_seat = params[2].to_i
     last_row = params[3].to_i
     last_seat = params[4].to_i
-    b = Booking.new(first_row, first_seat, last_row, last_seat)
-    @hall.book(b, @hall)
+    booking = Booking.new(first_row, first_seat, last_row, last_seat)
+    hall.book(booking, hall)
   end
     puts "Total number of bookings rejected: #{@hall.rejected.count}"
+    puts "IF you want see the rejected bookings type: hall.rejected"
 end
 
 input_from

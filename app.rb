@@ -8,7 +8,10 @@ require_relative 'lib/seat'
 @hall = CinemaHall.new(1)
 
 
-def input_from(file_path)
+
+def input_from
+  puts "Please put the path of the file to be processed"
+  file_path = gets.chomp
   File.open(file_path, "r").each_line do | booking_request|
     params = booking_request.split(/\D/).drop(1)
     first_row = params[1].to_i
@@ -20,3 +23,5 @@ def input_from(file_path)
   end
     puts "Total number of bookings rejected: #{@hall.rejected.count}"
 end
+
+input_from

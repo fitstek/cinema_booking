@@ -14,10 +14,6 @@ class CinemaHall
 	attr_reader :number
 	attr_reader :rows
 
-  def populate_hall
-    
-  end
-
 	def edge?(seat)
 		seat.number == 0 || seat.number == 49
 	end

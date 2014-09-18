@@ -11,10 +11,6 @@ class Seat
     @number = seat_number
   end
 
-  def available?
-    @available
-  end
-
   def booked?
     !@available
   end

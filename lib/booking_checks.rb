@@ -10,7 +10,7 @@ module BookingChecks
 
   def self.seats_available?(booking_request, hall)
     booking_request.seat_numbers.all? do |seat_number|
-      hall.rows[booking_request.first_seat_row].seats[seat_number].available?
+      !hall.rows[booking_request.first_seat_row].seats[seat_number].booked?
     end
   end
 

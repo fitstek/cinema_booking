@@ -3,7 +3,7 @@ require 'seat'
 describe Seat do
   let(:seat) { Seat.new(0, 0) }
   it 'is available initially' do
-    expect(seat).to be_available
+    expect(seat).not_to be_booked
   end
 
   it 'can change states to booked' do

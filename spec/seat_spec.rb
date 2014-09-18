@@ -21,10 +21,10 @@ describe Seat do
   end
 
   it 'raises an error if the seat number is greater than 49' do
-    expect(lambda { Seat.new(0, 50) }).to raise_error(RuntimeError)
+    expect(-> { Seat.new(0, 50) }).to raise_error(RuntimeError)
   end
 
   it 'raises an error if the seat number is less than 0' do
-    expect(lambda { Seat.new(0, -1) }).to raise_error(RuntimeError)
+    expect(-> { Seat.new(0, -1) }).to raise_error(RuntimeError)
   end
 end

@@ -1,5 +1,6 @@
 require 'cinema_hall'
 require 'spec_helper'
+require 'stringio'
 
 describe CinemaHall do
   let(:hall) { CinemaHall.new(1) }

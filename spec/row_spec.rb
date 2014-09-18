@@ -8,11 +8,11 @@ describe Row do
   end
 
   it 'raises an error if the row number is greater than 99' do
-    expect(lambda { Row.new(100) }).to raise_error(RuntimeError)
+    expect(-> { Row.new(100) }).to raise_error(RuntimeError)
   end
 
   it 'raises an error if the row number is less than 0' do
-    expect(lambda { Row.new(-1) }).to raise_error(RuntimeError)
+    expect(-> { Row.new(-1) }).to raise_error(RuntimeError)
   end
 
   it 'contains 50 seat objects' do

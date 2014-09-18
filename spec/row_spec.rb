@@ -1,4 +1,5 @@
 require 'row'
+require 'spec_helper'
 
 describe Row do
   it 'it initially knows it\'s number' do

@@ -1,4 +1,5 @@
 require 'cinema_hall'
+require 'spec_helper'
 
 describe CinemaHall do
   let(:hall) { CinemaHall.new(1) }

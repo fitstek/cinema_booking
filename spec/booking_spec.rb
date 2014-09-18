@@ -1,4 +1,5 @@
 require 'booking'
+require 'spec_helper'
 
 describe Booking do
   let(:booking) { Booking.new(0, 1, 0, 1) }

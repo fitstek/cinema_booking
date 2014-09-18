@@ -4,7 +4,7 @@ class Booking
 
   def initialize(first_seat_row, first_seat_number, last_seat_row, last_seat_number)
     @@ids += 1
-    @seat_numbers ||= []
+    @seat_numbers = []
     @id = @@ids
     @first_seat = first_seat_number
     @last_seat = last_seat_number

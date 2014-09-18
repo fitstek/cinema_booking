@@ -14,7 +14,7 @@ describe Row do
     expect(lambda { Row.new(-1) }).to raise_error(RuntimeError)
   end
 
-  it 'contains 50 seats' do
+  it 'contains 50 seat objects' do
     row = Row.new(0)
     expect(row.seats.count).to eq 50
   end

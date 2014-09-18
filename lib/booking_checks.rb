@@ -9,7 +9,9 @@ module BookingChecks
   end
 
   def self.seats_available?(booking_request, hall)
-    booking_request.seat_numbers.all? { |seat_number| hall.rows[booking_request.first_seat_row].seats[seat_number].available? }
+    booking_request.seat_numbers.all? do |seat_number|
+      hall.rows[booking_request.first_seat_row].seats[seat_number].available?
+    end
   end
 
   def self.leaves_more_than_one_gap?(booking_request, hall)

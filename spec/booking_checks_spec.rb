@@ -13,7 +13,7 @@ describe BookingChecks do
     expect(BookingChecks.seats_on_the_same_row?(booking3)).to eq true
   end
 
-  it 'gives false when bookings are on the same row' do
+  it 'gives false when bookings are on ta different row' do
     expect(BookingChecks.seats_on_the_same_row?(booking4)).to eq false
   end
 

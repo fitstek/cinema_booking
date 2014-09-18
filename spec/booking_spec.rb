@@ -2,16 +2,23 @@ require 'booking'
 
 describe Booking do
   let(:booking) { Booking.new(0, 1, 0, 1) }
-  let(:booking2) { Booking.new(0, 1, 0, 3) }
 
   context 'initializes with booking ID, row, first seat and last seat' do
 
-    it 'takes the first and last positions of bookings(row,seat)' do
+    it 'knows the first seat number' do
       expect(booking.first_seat).to eq 1
     end
 
-    it 'takes the first and last positions of bookings(row,seat)' do
-      expect(booking2.last_seat).to eq 3
+    it 'knows the last seat number' do
+      expect(booking.last_seat).to eq 1
+    end
+
+    it 'knows the row of the first seat number' do
+      expect(booking.first_seat_row).to eq 0
+    end
+
+    it 'knows the row of the first seat number' do
+      expect(booking.last_seat_row).to eq 0
     end
   end
 end

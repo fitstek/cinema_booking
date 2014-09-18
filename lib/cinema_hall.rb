@@ -14,30 +14,6 @@ class CinemaHall
 	attr_reader :number
 	attr_reader :rows
 
-	def edge?(seat)
-		seat.number == 0 || seat.number == 49
-	end
-
-	def next(seat)
-		if seat.number == 0
-			return self.rows[seat.row].seats[seat.number + 1]
-		elsif seat.number == 49
-			return nil
-    else 
-      self.rows[seat.row].seats[seat.number + 1]
-		end
-	end
-
-	def previous(seat)
-		if seat.number == 49
-			return self.rows[seat.row].seats[seat.number - 1]
-		elsif seat.number == 0
-			return nil
-    else
-      self.rows[seat.row].seats[seat.number - 1] 
-		end
-	end
-
 	def book(booking_request, hall)
 		if BookingChecks.valid_for_booking?(booking_request, hall)
 			booking_request.seat_numbers.each do |seat_number|

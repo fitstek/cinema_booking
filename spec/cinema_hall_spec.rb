@@ -18,39 +18,6 @@ describe CinemaHall do
 		expect(hall.rows[0].seats[0]).to be_booked
 	end
 
-  context 'next seat' do
-
-    it 'knows seat 1 is next to seat 0' do
-      expect(hall.next(hall.rows[0].seats[0]).number).to eq 1
-    end
-
-    it 'knows to return nil for seat 49' do
-      expect(hall.next(hall.rows[0].seats[49])).to eq nil
-    end    
-  end
-
-  context 'previous seat' do
-
-    it 'knows seat 0 is previous to seat 1' do
-      expect(hall.previous(hall.rows[0].seats[1]).number).to eq 0
-    end
-
-    it 'knows to return nil for seat 0' do
-      expect(hall.previous(hall.rows[0].seats[0])).to eq nil
-    end    
-  end
-
-  context 'edge seats' do
-
-    it 'knows 0 is an edge seats' do
-      expect(hall.edge?(hall.rows[0].seats[0])).to eq true
-    end
-
-    it 'knows 10 is not an edge seats' do
-      expect(hall.edge?(hall.rows[0].seats[10])).to eq false
-    end    
-  end
-
 	context 'seats that do not meet the criterion' do
 		it 'seat 1 when seat 0 is not booked' do
 			hall.book(Booking.new(0,1,0,4), hall)

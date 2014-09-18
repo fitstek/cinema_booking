@@ -4,19 +4,26 @@ class CinemaHall
     @rejected = []
     @number = hall_number
     @rows ||= []
-    0.upto(99).each do | row_number|
-      @rows << Row.new(row_number)
-    end
   end
 
   attr_reader :number
-  attr_reader :rows
   attr_reader :rejected
+
+  def rows
+    0.upto(99).each do | row_number|
+      @rows << Row.new(row_number)
+    end
+    @rows
+  end
+
+  def seat_in(row_number, seat_number)
+    rows[row_number].seats[seat_number]
+  end
 
   def book(booking_request, hall)
     if BookingChecks.valid_for_booking?(booking_request, hall)
       booking_request.seat_numbers.each do |seat_number|
-        rows[booking_request.first_seat_row].seats[seat_number].available = false
+        seat_in(booking_request.first_seat_row, seat_number).available = false
       end
     else
       rejected << booking_request

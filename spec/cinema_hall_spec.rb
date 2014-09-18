@@ -14,7 +14,7 @@ describe CinemaHall do
     expect(hall.rows.count).to eq 100
   end
 
-  it 'books seats' do
+  it 'can book seats' do
     hall.book(booking, hall)
     expect(hall.rows[0].seats[0]).to be_booked
   end

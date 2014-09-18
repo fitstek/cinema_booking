@@ -1,16 +1,15 @@
 # Describes the attributes of a single seat
 class Seat
+  attr_reader :row, :number
+  attr_accessor :available
+
   def initialize(row_number, seat_number)
-    fail 'Please pick a seat number between 0 and 49' if inexistent_seat?(seat_number)
-    fail 'Please pick a row number between 0 and 99' if inexistent_row?(row_number)
+    fail 'Please pick a seat between 0 and 49' if inexistent_seat?(seat_number)
+    fail 'Please pick a row between 0 and 99' if inexistent_row?(row_number)
     @available = true
     @row = row_number
     @number = seat_number
   end
-
-  attr_reader :row
-  attr_reader :number
-  attr_accessor :available
 
   def available?
     @available

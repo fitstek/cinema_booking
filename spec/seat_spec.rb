@@ -1,5 +1,4 @@
 require 'seat'
-require 'spec_helper'
 
 describe Seat do
   let(:seat) { Seat.new(0, 0) }

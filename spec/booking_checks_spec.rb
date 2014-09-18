@@ -1,5 +1,4 @@
 require 'booking_checks'
-require 'spec_helper'
 
 describe BookingChecks do
   let(:hall) { CinemaHall.new(1) }

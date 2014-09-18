@@ -22,12 +22,10 @@ module BookingChecks
     booked_seats_on_row = hall.rows[first_seat_row].seats.select(&:booked?)
     booked_seat_number_on_row = booked_seats_on_row.map(&:number)
 
-    if booked_seat_number_on_row.nil?
-      first_seat_number != 1 && last_seat_number != 48
-    elsif booked_seat_number_on_row.include?(last_seat_number + 2)
-      booked_seat_number_on_row.include?(last_seat_number + 1) ? true : false
+    if booked_seat_number_on_row.include?(last_seat_number + 2)
+      booked_seat_number_on_row.include?(last_seat_number + 1)
     elsif booked_seat_number_on_row.include?(first_seat_number - 2)
-      booked_seat_number_on_row.include?(first_seat_number - 1) ? true : false
+      booked_seat_number_on_row.include?(first_seat_number - 1)
     elsif first_seat_number == 1
       booked_seat_number_on_row.include?(0)
     elsif last_seat_number == 48

@@ -4,7 +4,7 @@ describe Booking do
   let(:booking) { Booking.new(0, 1, 0, 1) }
 
   context 'initializes with booking ID, row, first seat and last seat' do
-    
+
     it 'knows the first seat number' do
       expect(booking.first_seat).to eq 1
     end

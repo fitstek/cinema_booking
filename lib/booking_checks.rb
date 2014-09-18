@@ -15,20 +15,16 @@ module BookingChecks
   end
 
   def self.leaves_more_than_one_gap?(booking_request, hall)
-    first_seat_row = booking_request.first_seat_row
-    first_seat_number = booking_request.first_seat
-    last_seat_number = booking_request.last_seat
+    seats = hall.rows[booking_request.first_seat_row].seats.select(&:booked?)
+    booked_seat_number_on_row = seats.map(&:number)
 
-    booked_seats_on_row = hall.rows[first_seat_row].seats.select(&:booked?)
-    booked_seat_number_on_row = booked_seats_on_row.map(&:number)
-
-    if booked_seat_number_on_row.include?(last_seat_number + 2)
-      booked_seat_number_on_row.include?(last_seat_number + 1)
-    elsif booked_seat_number_on_row.include?(first_seat_number - 2)
-      booked_seat_number_on_row.include?(first_seat_number - 1)
-    elsif first_seat_number == 1
+    if booked_seat_number_on_row.include?(booking_request.last_seat + 2)
+      booked_seat_number_on_row.include?(booking_request.last_seat + 1)
+    elsif booked_seat_number_on_row.include?(booking_request.first_seat - 2)
+      booked_seat_number_on_row.include?(booking_request.first_seat - 1)
+    elsif booking_request.first_seat == 1
       booked_seat_number_on_row.include?(0)
-    elsif last_seat_number == 48
+    elsif booking_request.last_seat == 48
       booked_seat_number_on_row.include?(49)
     else
       true

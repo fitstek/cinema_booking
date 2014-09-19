@@ -15,17 +15,20 @@ module BookingChecks
   end
 
   def self.leaves_more_than_one_gap?(booking_request, hall)
-    seats = hall.rows[booking_request.first_seat_row].seats.select(&:booked?)
-    booked_seat_number_on_row = seats.map(&:number)
+    if seats(booking_request, hall).include?(booking_request.last_seat + 2)
+      seats(booking_request, hall).include?(booking_request.last_seat + 1)
+    elsif seats(booking_request, hall).include?(booking_request.first_seat - 2)
+      seats(booking_request, hall).include?(booking_request.first_seat - 1)
+    else
+      corner_adjacent?(booking_request, hall)
+    end
+  end
 
-    if booked_seat_number_on_row.include?(booking_request.last_seat + 2)
-      booked_seat_number_on_row.include?(booking_request.last_seat + 1)
-    elsif booked_seat_number_on_row.include?(booking_request.first_seat - 2)
-      booked_seat_number_on_row.include?(booking_request.first_seat - 1)
-    elsif booking_request.first_seat == 1
-      booked_seat_number_on_row.include?(0)
+  def self.corner_adjacent?(booking_request, hall)
+    if booking_request.first_seat == 1
+      booked_seats(booking_request, hall).include?(0)
     elsif booking_request.last_seat == 48
-      booked_seat_number_on_row.include?(49)
+      booked_seats(booking_request, hall).include?(49)
     else
       true
     end
@@ -36,5 +39,10 @@ module BookingChecks
     less_than_six_seats?(booking_request) &&
     seats_available?(booking_request, hall) &&
     leaves_more_than_one_gap?(booking_request, hall)
+  end
+
+  def self.seats(booking_request, hall)
+    seats = hall.rows[booking_request.first_seat_row].seats.select(&:booked?)
+    seats.map(&:number)
   end
 end

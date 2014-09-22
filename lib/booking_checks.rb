@@ -1,7 +1,7 @@
 # An independent module to enforce the booking rules
 module BookingChecks
   def self.seats_on_the_same_row?(booking_request)
-    booking_request.first_seat_row == booking_request.last_seat_row
+    booking_request.first_row == booking_request.last_row
   end
 
   def self.less_than_six_seats?(booking_request)
@@ -10,7 +10,7 @@ module BookingChecks
 
   def self.seats_available?(booking_request, hall)
     booking_request.seat_numbers.all? do |seat_number|
-      !hall.rows[booking_request.first_seat_row].seats[seat_number].booked?
+      !hall.rows[booking_request.first_row].seats[seat_number].booked?
     end
   end
 
@@ -26,9 +26,9 @@ module BookingChecks
 
   def self.corner_adjacent?(booking_request, hall)
     if booking_request.first_seat == 1
-      booked_seats(booking_request, hall).include?(0)
+      seats(booking_request, hall).include?(0)
     elsif booking_request.last_seat == 48
-      booked_seats(booking_request, hall).include?(49)
+      seats(booking_request, hall).include?(49)
     else
       true
     end
@@ -42,7 +42,7 @@ module BookingChecks
   end
 
   def self.seats(booking_request, hall)
-    seats = hall.rows[booking_request.first_seat_row].seats.select(&:booked?)
+    seats = hall.rows[booking_request.first_row].seats.select(&:booked?)
     seats.map(&:number)
   end
 end

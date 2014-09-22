@@ -3,12 +3,12 @@ class Seat
   attr_reader :row, :number
   attr_accessor :available
 
-  def initialize(row_number, seat_number)
-    fail 'Please pick a seat between 0 and 49' if inexistent_seat?(seat_number)
-    fail 'Please pick a row between 0 and 99' if inexistent_row?(row_number)
+  def initialize(options = {})
+    fail 'Please pick a seat between 0 and 49' if inexistent_seat?(options.fetch(:number))
+    fail 'Please pick a row between 0 and 99' if inexistent_row?(options.fetch(:row))
     @available = true
-    @row = row_number
-    @number = seat_number
+    @row = options.fetch(:row)
+    @number = options.fetch(:number)
   end
 
   def booked?

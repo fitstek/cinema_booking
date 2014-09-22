@@ -2,18 +2,18 @@
 class Booking
   @id = 0
 
-  attr_reader :id, :first_seat, :last_seat, :last_seat_row, :first_seat_row
+  attr_reader :id, :first_seat, :last_seat, :last_row, :first_row
 
   class << self
     attr_accessor :id
   end
 
-  def initialize(first_seat_row, first_seat, last_seat_row, last_seat)
+  def initialize(options = {})
     self.class.id += 1
-    @first_seat_row = first_seat_row
-    @first_seat = first_seat
-    @last_seat_row = last_seat_row
-    @last_seat = last_seat
+    @first_row = options.fetch(:first_row)
+    @first_seat = options.fetch(:first_seat)
+    @last_row = options.fetch(:last_row)
+    @last_seat = options.fetch(:last_seat)
   end
 
   def seat_numbers

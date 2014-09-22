@@ -1,8 +1,8 @@
 # This gives the attributes of a single hall in the cinema
 class CinemaHall
-  def initialize(hall_number)
+  def initialize(options = {})
     @rejected = []
-    @number = hall_number
+    @number = options.fetch(:hall_number)
     @rows ||= []
   end
 
@@ -11,19 +11,19 @@ class CinemaHall
 
   def rows
     0.upto(99).each do | row_number|
-      @rows << Row.new(row_number)
+      @rows << Row.new(number: row_number)
     end
     @rows
   end
 
-  def seat_in(row_number, seat_number)
-    rows[row_number].seats[seat_number]
+  def seat_in(options = {})
+    rows[options.fetch(:row)].seats[options.fetch(:seat)]
   end
 
   def book(booking_request, hall)
     if BookingChecks.valid_for_booking?(booking_request, hall)
       booking_request.seat_numbers.each do |seat_number|
-        seat_in(booking_request.first_seat_row, seat_number).available = false
+        seat_in(row: booking_request.first_row, seat: seat_number).available = false
       end
     else
       rejected << booking_request

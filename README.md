@@ -28,6 +28,7 @@ Technologies Used
 
 How to use
 =========
+
 * git clone git@github.com:fitstek/cinema_booking.git
 * cd cinema_booking
 * irb

@@ -5,7 +5,7 @@ module BookingChecks
   end
 
   def self.less_than_six_seats?(booking_request)
-    booking_request.seat_numbers.count < 6
+    booking_request.seat_numbers.count < Booking.max_number_of_seats
   end
 
   def self.seats_available?(booking_request, hall)
@@ -25,10 +25,10 @@ module BookingChecks
   end
 
   def self.corner_adjacent?(booking_request, hall)
-    if booking_request.first_seat == 1
-      seats(booking_request, hall).include?(0)
-    elsif booking_request.last_seat == 48
-      seats(booking_request, hall).include?(49)
+    if booking_request.first_seat == Seat.first_seat_in_row + 1
+      seats(booking_request, hall).include?(Seat.first_seat_in_row)
+    elsif booking_request.last_seat == Seat.last_seat_in_row - 1
+      seats(booking_request, hall).include?(Seat.last_seat_in_row)
     else
       true
     end

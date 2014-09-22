@@ -16,6 +16,10 @@ class Booking
     @last_seat = options.fetch(:last_seat)
   end
 
+  def self.max_number_of_seats
+    5
+  end
+
   def seat_numbers
     @seat_numbers = []
     first_seat.upto(last_seat).each do |seat_number|

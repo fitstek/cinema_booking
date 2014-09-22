@@ -9,10 +9,18 @@ class Row
   attr_reader :number
 
   def seats
-    0.upto(49).each do | seat_number|
+    (Seat.first_seat_in_row).upto(Seat.last_seat_in_row).each do | seat_number|
       @seats << Seat.new(row: number, number: seat_number)
     end
     @seats
+  end
+
+  def self.first_row_in_hall
+    0
+  end
+
+  def self.last_row_in_hall
+    99
   end
 
   def inexistent?(row_number)

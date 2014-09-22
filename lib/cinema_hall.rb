@@ -10,7 +10,7 @@ class CinemaHall
   attr_reader :rejected
 
   def rows
-    0.upto(99).each do | row_number|
+    (Row.first_row_in_hall).upto(Row.last_row_in_hall).each do | row_number|
       @rows << Row.new(number: row_number)
     end
     @rows

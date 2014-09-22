@@ -19,6 +19,14 @@ class Seat
     number < 0 || number > 49
   end
 
+  def self.first_seat_in_row
+    0
+  end
+
+  def self.last_seat_in_row
+    49
+  end
+
   def inexistent_row?(number)
     number < 0 || number > 99
   end

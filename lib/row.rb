@@ -1,4 +1,4 @@
-# The row object a container for 50 seat objects
+# The row object is a container for 50 seat objects
 class Row
   attr_reader :number
 

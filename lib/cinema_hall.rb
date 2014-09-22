@@ -1,13 +1,13 @@
 # This gives the attributes of a single hall in the cinema
 class CinemaHall
+
+  attr_reader :number, :rejected
+
   def initialize(options = {})
     @rejected = []
     @number = options.fetch(:hall_number)
     @rows ||= []
   end
-
-  attr_reader :number
-  attr_reader :rejected
 
   def rows
     (Row.first_row_in_hall).upto(Row.last_row_in_hall).each do | row_number|

@@ -2,10 +2,14 @@
 class Booking
   @id = 0
 
-  attr_reader :id, :first_seat, :last_seat, :last_row, :first_row
-
   class << self
     attr_accessor :id
+  end
+
+  attr_reader :id, :first_seat, :last_seat, :last_row, :first_row
+
+  def self.max_number_of_seats
+    5
   end
 
   def initialize(options = {})
@@ -14,10 +18,6 @@ class Booking
     @first_seat = options.fetch(:first_seat)
     @last_row = options.fetch(:last_row)
     @last_seat = options.fetch(:last_seat)
-  end
-
-  def self.max_number_of_seats
-    5
   end
 
   def seat_numbers

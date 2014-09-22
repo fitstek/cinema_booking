@@ -1,6 +1,5 @@
 # The row object a container for 50 seat objects
 class Row
-
   attr_reader :number
 
   def self.first_row_in_hall

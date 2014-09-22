@@ -1,6 +1,5 @@
 # This gives the attributes of a single hall in the cinema
 class CinemaHall
-
   attr_reader :number, :rejected
 
   def initialize(options = {})
